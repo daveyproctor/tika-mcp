@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "tika-mcp"
 version = "0.1.0"
@@ -6,12 +10,12 @@ authors = [
     { name = "Davey Proctor" }
 ]
 dependencies = [
-    "mcp[cli]>=0.1.0",   # FastMCP server and CLI tools
-    "httpx>=0.25.0",     # Async HTTP client to talk to Tika
+    "mcp[cli]>=0.1.0",
+    "httpx>=0.25.0"
 ]
-
-[tool.setuptools]
-packages = ["app"]
 
 [project.scripts]
 tika-mcp = "app.main:main"
+
+[tool.setuptools]
+packages = ["app"]

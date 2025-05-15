@@ -1,15 +1,17 @@
 #!/bin/bash
+# Script to run the Tika MCP server
 
-TIKA_URL="$1"
+# Default Tika URL
+TIKA_URL=${1:-http://localhost:9998}
 
-if [ -z "$TIKA_URL" ]; then
-  echo "Usage: ./run.sh <TIKA_SERVER_URL>"
-  echo "Example: ./run.sh http://localhost:9998"
-  exit 1
+# Activate the virtual environment if it exists
+if [ -d ".venv" ]; then
+    source .venv/bin/activate
 fi
 
-# Activate the virtual environment
-source .venv/bin/activate
+# Register the MCP server if needed
+python -m app.register_mcp_server
 
-# Run the MCP server over stdio and inject TIKA_URL as an environment variable
-TIKA_URL="$TIKA_URL" python -m app.main
+# Run the MCP server
+echo "Starting Tika MCP server with Tika URL: $TIKA_URL"
+python -m app.simple_mcp_server

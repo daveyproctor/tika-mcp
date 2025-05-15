@@ -3,3 +3,6 @@
 *.log
 __pycache__/
 build/
+llms-full.txt
+llms-small.txt
+*.pyc
