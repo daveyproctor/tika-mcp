@@ -1,0 +1,17 @@
+[project]
+name = "tika-mcp"
+version = "0.1.0"
+description = "An MCP server that wraps Apache Tika for document content and metadata extraction."
+authors = [
+    { name = "Davey Proctor" }
+]
+dependencies = [
+    "mcp[cli]>=0.1.0",   # FastMCP server and CLI tools
+    "httpx>=0.25.0",     # Async HTTP client to talk to Tika
+]
+
+[tool.setuptools]
+packages = ["app"]
+
+[project.scripts]
+tika-mcp = "app.main:main"
